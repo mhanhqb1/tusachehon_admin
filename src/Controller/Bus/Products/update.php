@@ -69,6 +69,24 @@ $this->UpdateForm->reset()
         'type' => 'file'
     ))
     ->addElement(array(
+        'id' => 'image2',
+        'label' => __('LABEL_IMAGE').'(378x378)',
+        'image' => true,
+        'type' => 'file'
+    ))
+        ->addElement(array(
+        'id' => 'image3',
+        'label' => __('LABEL_IMAGE').'(378x378)',
+        'image' => true,
+        'type' => 'file'
+    ))
+        ->addElement(array(
+        'id' => 'image4',
+        'label' => __('LABEL_IMAGE').'(378x378)',
+        'image' => true,
+        'type' => 'file'
+    ))
+    ->addElement(array(
         'id' => 'price',
         'label' => __('LABEL_PRICE'),
     ))
@@ -128,6 +146,24 @@ if ($this->request->is('post')) {
             $filename = $data['image']['name'];
             $filedata = $data['image']['tmp_name'];
             $data['image'] = new CurlFile($filedata, $filetype, $filename);
+        }
+        if (!empty($data['image2']['name'])) {
+            $filetype = $data['image2']['type'];
+            $filename = $data['image2']['name'];
+            $filedata = $data['image2']['tmp_name'];
+            $data['image2'] = new CurlFile($filedata, $filetype, $filename);
+        }
+        if (!empty($data['image3']['name'])) {
+            $filetype = $data['image3']['type'];
+            $filename = $data['image3']['name'];
+            $filedata = $data['image3']['tmp_name'];
+            $data['image3'] = new CurlFile($filedata, $filetype, $filename);
+        }
+        if (!empty($data['image4']['name'])) {
+            $filetype = $data['image4']['type'];
+            $filename = $data['image4']['name'];
+            $filedata = $data['image4']['tmp_name'];
+            $data['image4'] = new CurlFile($filedata, $filetype, $filename);
         }
         // Call API
         $id = Api::call(Configure::read('API.url_products_addupdate'), $data);
